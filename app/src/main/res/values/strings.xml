@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Crunch Time</string>
+    <string name="action_settings">Settings</string>
+    <string name="exercise_prompt">Select an exercise</string>
+    <string name="exercise_hint">Enter number of reps or minutes</string>
+    <string-array name="exercise_list">
+        <item>Pushups</item>
+        <item>Situps</item>
+        <item>Squats</item>
+        <item>Leg-Lifts</item>
+        <item>Planking</item>
+        <item>Jumping Jacks</item>
+        <item>Pullups</item>
+        <item>Cycling</item>
+        <item>Walking</item>
+        <item>Jogging</item>
+        <item>Swimming</item>
+        <item>Stair-Climbing</item>
+    </string-array>
+    <string name="title_activity_cal_to_exercise">CalToExerciseActivity</string>
+    <string name="title_activity_second">Second</string>
+</resources>

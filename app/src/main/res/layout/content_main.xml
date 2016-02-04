@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:showIn="@layout/activity_main" tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Exercise To Calories"
+                    android:id="@+id/btn_exercise_to_calories"
+                    android:onClick="gotoExerciseToCalories"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Calories to Exercise"
+                    android:id="@+id/btn_calories_to_exercise"
+                    android:layout_alignParentTop="true"
+                    android:onClick="gotoCaloriesToExercise"
+                    android:layout_alignParentEnd="true" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Find Calories Burnt"
+                    android:id="@+id/text_find_calories_burnt"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:focusable="true"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/imageView2"
+                    android:gravity="center"
+                    android:layout_alignParentEnd="true" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:hint="@string/exercise_hint"
+                    android:id="@+id/edit_reps"
+                    android:layout_below="@+id/text_find_calories_burnt"
+                    android:layout_alignParentStart="true" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/imageView2"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/flame" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/imageView3"
+                    android:src="@drawable/flame"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:text="Reps/Minutes Of"
+                    android:id="@+id/text_units"
+                    android:paddingRight="12dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exercise_spinner"
+                    android:entries="@array/exercise_list"
+                    android:paddingBottom="24dp"
+                    android:textAlignment="gravity"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/text_units" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Calories"
+                    android:id="@+id/text_calories"
+                    android:layout_below="@+id/exercise_spinner"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/text_calories_amt"
+                    android:layout_below="@+id/exercise_spinner"
+                    android:layout_centerHorizontal="true"
+                    android:textStyle="bold"
+                    android:textSize="28sp"
+                    android:text="0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Burns"
+                    android:id="@+id/text_burns"
+                    android:layout_below="@+id/exercise_spinner"
+                    android:layout_alignParentStart="true"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="You also could have done:"
+                android:id="@+id/textView3"
+                android:layout_marginTop="25dp"
+                android:layout_below="@+id/text_calories_amt"
+                android:layout_alignParentStart="true"
+                android:layout_alignEnd="@+id/text_units"
+                android:paddingBottom="12dp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/horizontalScrollView">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="80dp"
+                            android:id="@+id/img_cycling"
+                            android:src="@drawable/cycling" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Cycling"
+                            android:gravity="center"
+                            android:id="@+id/text_cycling_subtitle" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="0"
+                            android:id="@+id/text_cycling_amt"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Min"
+                            android:id="@+id/text_cycling_units"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="80dp"
+                            android:id="@+id/img_jogging"
+                            android:src="@drawable/jogging" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Jogging"
+                            android:gravity="center"
+                            android:id="@+id/text_jogging_subtitle" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="0"
+                            android:id="@+id/text_jogging_amt"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Min"
+                            android:id="@+id/text_jogging_units"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="80dp"
+                            android:id="@+id/imageView"
+                            android:src="@drawable/jumpingjack" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Jumping Jacks"
+                            android:gravity="center"
+                            android:id="@+id/text_jumpingjacks_subtitle"
+                            android:layout_weight="7.09" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="0"
+                            android:id="@+id/text_jumpingjacks_amt"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="17.22"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Min"
+                            android:id="@+id/text_jumpingjacks_units"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="80dp"
+                            android:id="@+id/img_leglifts"
+                            android:src="@drawable/leglifts" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Leg Lifts"
+                            android:gravity="center"
+                            android:id="@+id/text_leglifts_subtitle" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="0"
+                            android:id="@+id/text_leglifts_amt"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Min"
+                            android:id="@+id/text_leglifts_units"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="80dp"
+                            android:id="@+id/img_plank"
+                            android:src="@drawable/plank" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Planking"
+                            android:gravity="center"
+                            android:id="@+id/text_plank_subtitle" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="0"
+                            android:id="@+id/text_plank_amt"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Min"
+                            android:id="@+id/text_plank_units"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="80dp"
+                            android:id="@+id/img_pullup"
+                            android:src="@drawable/pullup" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Pullups"
+                            android:gravity="center"
+                            android:id="@+id/text_pullup_subtitle" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="0"
+                            android:id="@+id/text_pullup_amt"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Reps"
+                            android:id="@+id/text_pullup_units"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="80dp"
+                            android:id="@+id/img_pushup"
+                            android:src="@drawable/pushup" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Pushups"
+                            android:gravity="center"
+                            android:id="@+id/text_pushup_subtitle" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="0"
+                            android:id="@+id/text_pushup_amt"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Reps"
+                            android:id="@+id/text_pushup_units"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="80dp"
+                            android:id="@+id/img_situp"
+                            android:src="@drawable/situp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Situps"
+                            android:gravity="center"
+                            android:id="@+id/text_situp_subtitle" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="0"
+                            android:id="@+id/text_situp_amt"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Reps"
+                            android:id="@+id/text_situp_units"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="80dp"
+                            android:id="@+id/img_squat"
+                            android:src="@drawable/squat" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Squats"
+                            android:gravity="center"
+                            android:id="@+id/text_squat_subtitle" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="0"
+                            android:id="@+id/text_squat_amt"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Reps"
+                            android:id="@+id/text_squat_units"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="80dp"
+                            android:id="@+id/img_stairclimbing"
+                            android:src="@drawable/stairclimbing" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Stair Climbing"
+                            android:gravity="center"
+                            android:id="@+id/text_stairclimbing_subtitle" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="0"
+                            android:id="@+id/text_stairclimbing_amt"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Min"
+                            android:id="@+id/text_stairclimbing_units"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="80dp"
+                            android:id="@+id/img_swimming"
+                            android:src="@drawable/swimming" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Swimming"
+                            android:gravity="center"
+                            android:id="@+id/text_swimming_subtitle" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="0"
+                            android:id="@+id/text_swimming_amt"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Min"
+                            android:id="@+id/text_swimming_units"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="80dp"
+                            android:id="@+id/img_walking"
+                            android:src="@drawable/walking" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Walking"
+                            android:gravity="center"
+                            android:id="@+id/text_walking_subtitle" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="0"
+                            android:id="@+id/text_walking_amt"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Min"
+                            android:id="@+id/text_walking_units"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Values are a rough estimate for a 150 lb. person"
+                    android:id="@+id/textView"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentStart="true"
+                    android:gravity="bottom|right"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
